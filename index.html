@@ -7,10 +7,27 @@
     <title> ANGULAR JS</title>
 </head>
 
-<body ng-app>
+<body ng-app="myApp">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    {{"Hello" + "World"}}
+    <script type="text/javascript" src="app.js"></script>
+    <div ng-controller="MyController">
+        <h2>Reviews</h2>
+        <div ng-repeat="review in reviews">
+            <div style="background-color: #eeeeee">
+                <p>{{review.comment}}</p>
+                <p><b>{{review.by}}</b></p>
+            </div>
+        </div>
+        <form name="reviewForm" ng-submit="addReview()">
+            <p>{{form.comment}}</p>
+            <p>{{form.by}}</p>
 
+            <label>comment</label><br />
+            <textarea ng-model="form.comment"></textarea>
+            <label>Author</label><br />
+            <input ng-model="form.by" type="email" /> <br />
+            <input type="submit" value="Add Review" />
+    </div>
 </body>
 
 </html>
