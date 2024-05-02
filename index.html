@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> ANGULAR JS</title>
+    <style type="text/css">
+        .ng-invalid.ng-dirty {
+            border-color: red;
+        }
+
+
+        .ng-valid.ng-dirty {
+            border-color: green;
+
+        }
+
+        input,
+        textarea {
+            border: 2px solid;
+        }
+    </style>
 </head>
 
 <body ng-app="myApp">
@@ -18,15 +34,16 @@
                 <p><b>{{review.by}}</b></p>
             </div>
         </div>
-        <form name="reviewForm" ng-submit="addReview()">
+        <form name="reviewForm" ng-submit=" reviewForm.$valid && addReview() novalidate">
             <p>{{form.comment}}</p>
             <p>{{form.by}}</p>
 
             <label>comment</label><br />
-            <textarea ng-model="form.comment"></textarea>
+            <textarea ng-model="form.comment" required></textarea>
             <label>Author</label><br />
-            <input ng-model="form.by" type="email" /> <br />
-            <input type="submit" value="Add Review" />
+            <input ng-model="form.by" type="email" required /> <br />
+            <input type="submit" value="Add Review" /> <br />
+            <p>Form Valid {{reviewForm.$valid}}</p>
     </div>
 </body>
 
